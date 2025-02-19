@@ -119,6 +119,7 @@
         @media (max-width: 768px) {
             body {
                 font-size: 16px;
+                flex-direction: column; /* Переводим тело на колонку для мобильных */
             }
 
             nav {
@@ -136,6 +137,21 @@
             .candidate-photo {
                 width: 90%;
                 height: auto;
+            }
+
+            /* Вкладки на мобильных */
+            nav {
+                display: block; /* Включаем блоковую навигацию на мобильных */
+                width: 100%;
+                background-color: #0039a6;
+                position: static;
+                padding: 10px;
+            }
+            nav a {
+                font-size: 16px;
+                padding: 10px;
+                display: block;
+                text-align: center;
             }
         }
     </style>
@@ -220,4 +236,3 @@
     </script>
 </body>
 </html>
-

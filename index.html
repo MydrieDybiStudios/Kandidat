@@ -13,6 +13,7 @@
             color: #333;
             font-size: 18px;
             display: flex;
+            flex-direction: column; /* Контент идет по вертикали */
         }
 
         /* Стили для боковой панели */
@@ -24,6 +25,9 @@
             padding: 20px;
             height: 100vh;
             position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
         nav a {
             color: white;
@@ -34,7 +38,6 @@
             border-radius: 5px;
             transition: background-color 0.3s;
             font-size: 20px;
-            white-space: nowrap; /* Останавливает обтекание текста */
         }
         nav a:hover {
             background-color: #b22222;
@@ -236,3 +239,4 @@
     </script>
 </body>
 </html>
+

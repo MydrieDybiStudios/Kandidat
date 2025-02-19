@@ -12,25 +12,22 @@
             background-color: #ffffff;
             color: #333;
             font-size: 18px;
+            display: flex;
         }
-        header {
-            background-color: #0039a6;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
+
+        /* Стили для боковой панели */
         nav {
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Список вертикальный */
+            width: 250px;
             background-color: #d52b1e;
-            padding: 15px;
-            flex-wrap: wrap; /* Разрешаем перенос кнопок на маленьких экранах */
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
         }
         nav a {
             color: white;
-            margin: 0 20px;
+            margin: 10px 0;
             text-decoration: none;
             font-weight: bold;
             padding: 15px 25px;
@@ -42,6 +39,23 @@
         nav a:hover {
             background-color: #b22222;
         }
+
+        /* Основной контент */
+        .content {
+            margin-left: 270px; /* Отступ от боковой панели */
+            padding: 20px;
+            width: 100%;
+        }
+
+        header {
+            background-color: #0039a6;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
         .tab-content {
             display: none;
             padding: 30px;
@@ -50,9 +64,11 @@
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
+
         .tab-content.active {
             display: block;
         }
+
         footer {
             background-color: #0039a6;
             color: white;
@@ -60,6 +76,7 @@
             padding: 15px;
             font-size: 18px;
         }
+
         .cta-button {
             display: inline-block;
             padding: 15px 25px;
@@ -71,9 +88,11 @@
             transition: background-color 0.3s;
             font-size: 20px;
         }
+
         .cta-button:hover {
             background-color: #b22222;
         }
+
         .photo-placeholder {
             width: 100%;
             height: 400px;
@@ -88,50 +107,40 @@
             color: #777;
         }
 
-        /* Обновление фото для мобильных */
         .candidate-photo {
             width: 100%;
             height: auto;
-            max-width: 1200px;  /* Ограничиваем максимальную ширину */
+            max-width: 1200px; /* Ограничиваем максимальную ширину */
             border-radius: 15px;
             margin: 30px auto;
             display: block;
         }
 
-        /* Мобильные стили */
         @media (max-width: 768px) {
             body {
                 font-size: 16px;
             }
 
             nav {
-                flex-direction: column; /* Кнопки будут располагаться вертикально */
-                align-items: center; /* Центрируем кнопки */
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-around;
+                height: auto;
+                position: static;
             }
 
-            nav a {
-                margin: 10px 0; /* Уменьшаем отступы между кнопками */
-                padding: 10px 20px;
-                font-size: 18px;
+            .content {
+                margin-left: 0;
             }
 
-            /* Обновление фото на мобильных */
             .candidate-photo {
-                width: 90%;  /* Делаем фото чуть меньше */
+                width: 90%;
                 height: auto;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Голосовать 3а Развитие!</h1>
-        <p>Опыт, ответственность, действия!</p>
-        <div>
-            <img src="2025-02-18_21-23-19.png" alt="Фото кандидата" class="candidate-photo">
-        </div>
-    </header>
-
     <nav>
         <a href="#about" onclick="showTab('about')">О кандидате</a>
         <a href="#program" onclick="showTab('program')">Программа</a>
@@ -139,56 +148,66 @@
         <a href="#contact" onclick="showTab('contact')">Контакты</a>
     </nav>
 
-    <section id="about" class="tab-content active">
-        <h2>Коротко о себе</h2>
-        <strong>Меня зовут Пестриков Кирилл, и я кандидат в лидеры нашей школы. 
-            Я всегда стремлюсь к саморазвитию и внедрению новаторских идей. Мои успехи в учебе и призовые места на олимпиадах подтверждают мою приверженность к высоким достижениям. В качестве лидера я готов работать над тем, чтобы создать условия для вашего роста и развития.
-            
-            <p>Применяя знания на практике, я активно участвую в проектной деятельности, например, в конкурсе «Шаг в будущее». Эти достижения принесли мне удивительные возможности, такие как поездка в Артек и звание лауреата конкурса «Ученик года». Я хочу, чтобы каждый из нас чувствовал поддержку и вдохновение на пути к новым вершинам.  
-            </p> Давайте вместе сделаем нашу школу еще лучше!</strong></li>
-        <h2>Почему я?</h2>
-        <p>Я верю в силу коллективных действий для позитивных изменений. Мои принципы:</p>
-        <ul>
-            <li><strong>Действия, а не обещания.</strong></li>
-            <li><strong>Сначала думаю, потом делаю.</strong></li>
-            <li><strong>Готовность слушать и действовать.</strong></li>
-        </ul>
-        <p>Я всегда уверен в своих действиях и готов работать для улучшения школьной жизни.</p>
-    </section>
+    <div class="content">
+        <header>
+            <h1>Голосовать 3а Развитие!</h1>
+            <p>Опыт, ответственность, действия!</p>
+            <div>
+                <img src="2025-02-18_21-23-19.png" alt="Фото кандидата" class="candidate-photo">
+            </div>
+        </header>
 
-    <section id="program" class="tab-content">
-        <h2>Мои предложения для школы</h2>
-        <ol>
-            <li><strong>Регулярные встречи с учениками.</strong></li>
-            <p><li><strong>Создание "Книги рекордов школы".</strong></li>
-            <p><li><strong>Открытый разговор с директором.</strong></li>
-                <p><li><strong>Яркие спортивные и культурные события.</strong></li>
-                    <p><li><strong>Система менторства.</strong></li>
-                        <p> <li><strong>Поддержка лучших инициатив по изменению и усовершенствованию школьной жизни.</strong></li>
-                            <p> <li><strong>Создание проекта по улучшению зон отдыха для обучающихся.</strong></li>
-                                <p> <li><strong>Проведение различных развлекательных мероприятий для обучающихся, в том числе дискотек с участием школьных творческих коллективов.</strong></li>
-                                    <p> <li><strong>Возможность проведения голосования по изменению меню платного питания для учеников каждый квартал.</strong></li>
-        </ol>
-    </section>
+        <section id="about" class="tab-content active">
+            <h2>Коротко о себе</h2>
+            <strong>Меня зовут Пестриков Кирилл, и я кандидат в лидеры нашей школы. 
+                Я всегда стремлюсь к саморазвитию и внедрению новаторских идей. Мои успехи в учебе и призовые места на олимпиадах подтверждают мою приверженность к высоким достижениям. В качестве лидера я готов работать над тем, чтобы создать условия для вашего роста и развития.
+                
+                <p>Применяя знания на практике, я активно участвую в проектной деятельности, например, в конкурсе «Шаг в будущее». Эти достижения принесли мне удивительные возможности, такие как поездка в Артек и звание лауреата конкурса «Ученик года». Я хочу, чтобы каждый из нас чувствовал поддержку и вдохновение на пути к новым вершинам.  
+                </p> Давайте вместе сделаем нашу школу еще лучше!</strong></li>
+            <h2>Почему я?</h2>
+            <p>Я верю в силу коллективных действий для позитивных изменений. Мои принципы:</p>
+            <ul>
+                <li><strong>Действия, а не обещания.</strong></li>
+                <li><strong>Сначала думаю, потом делаю.</strong></li>
+                <li><strong>Готовность слушать и действовать.</strong></li>
+            </ul>
+            <p>Я всегда уверен в своих действиях и готов работать для улучшения школьной жизни.</p>
+        </section>
 
-    <section id="support" class="tab-content">
-        <h2>Присоединяйтесь к кампании!</h2>
-        <p>Если вы поддерживаете мои идеи, расскажите о них своим друзьям и одноклассникам. Вместе мы сможем сделать нашу школу лучше!</p>
-        <a href="#contact" class="cta-button" onclick="showTab('contact')">Связаться со мной</a>
-    </section>
+        <section id="program" class="tab-content">
+            <h2>Мои предложения для школы</h2>
+            <ol>
+                <li><strong>Регулярные встречи с учениками.</strong></li>
+                <p><li><strong>Создание "Книги рекордов школы".</strong></li>
+                <p><li><strong>Открытый разговор с директором.</strong></li>
+                    <p><li><strong>Яркие спортивные и культурные события.</strong></li>
+                        <p><li><strong>Система менторства.</strong></li>
+                            <p> <li><strong>Поддержка лучших инициатив по изменению и усовершенствованию школьной жизни.</strong></li>
+                                <p> <li><strong>Создание проекта по улучшению зон отдыха для обучающихся.</strong></li>
+                                    <p> <li><strong>Проведение различных развлекательных мероприятий для обучающихся, в том числе дискотек с участием школьных творческих коллективов.</strong></li>
+                                        <p> <li><strong>Возможность проведения голосования по изменению меню платного питания для учеников каждый квартал.</strong></li>
+            </ol>
+        </section>
 
-    <section id="contact" class="tab-content">
-        <h2>Свяжитесь со мной</h2>
-        <p>Если у вас есть вопросы или предложения, напишите мне:</p>
-        <ul>
-            <li><strong>Email:</strong> virtuallearningcomplex@gmail.com</li>
-            <li><strong>Телеграмм:@GRULAB_OWNER</strong></li>
-        </ul>
-    </section>
+        <section id="support" class="tab-content">
+            <h2>Присоединяйтесь к кампании!</h2>
+            <p>Если вы поддерживаете мои идеи, расскажите о них своим друзьям и одноклассникам. Вместе мы сможем сделать нашу школу лучше!</p>
+            <a href="#contact" class="cta-button" onclick="showTab('contact')">Связаться со мной</a>
+        </section>
 
-    <footer>
-        <p>© 2025 Голосовать 3а Развитие! МОБУ СОШ №1 п.г.т. Пойковский</p>
-    </footer>
+        <section id="contact" class="tab-content">
+            <h2>Свяжитесь со мной</h2>
+            <p>Если у вас есть вопросы или предложения, напишите мне:</p>
+            <ul>
+                <li><strong>Email:</strong> virtuallearningcomplex@gmail.com</li>
+                <li><strong>Телеграмм:@GRULAB_OWNER</strong></li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>© 2025 Голосовать 3а Развитие! МОБУ СОШ №1 п.г.т. Пойковский</p>
+        </footer>
+    </div>
 
     <script>
         function showTab(tabId) {
@@ -201,3 +220,4 @@
     </script>
 </body>
 </html>
+
